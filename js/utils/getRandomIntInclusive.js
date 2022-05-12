@@ -13,14 +13,6 @@ function getRandomIntInclusive(min, max) {
   throw new Error('Некорректное значение аргумента');
 }
 
-getRandomIntInclusive(10, 100);
+// getRandomIntInclusive(10, 100);
 
-function getRandomNumInclusive (min, max, order) {
-  if (max > min) {
-    return (Math.random() * (max - min + 1) + min).toFixed(order);
-  }
-
-  throw new Error('Некорректное значение аргумента');
-}
-
-getRandomNumInclusive(-10, 10, 2);
+export {getRandomIntInclusive};
