@@ -18,18 +18,31 @@
 
   // photos, массив строк — массив случайной длины из значений: https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.
 
-  // location, объект
-    // lat, от 35.65000 до 35.70000.
-    // lng, 139.70000 до 139.80000.
+  // 
 
+
+
+  // создает рандомную координату  location, объект
+  // lat, от 35.65000 до 35.70000.
+  // lng, 139.70000 до 139.80000. 
 const createRandomLocation = () => {
   return console.log({
     lat: getRandomNumInclusive (35.65000, 35.70000, 5),
     lng: getRandomNumInclusive (139.70000, 139.80000, 5),
   });
-}
+};
 
 createRandomLocation ();
+
+
+// создает адрес изображения avatar, строка
+const createRandomAvatar = (i) => {
+  const number = String(i).padStart(2,'0');
+  const avatar = 'img/avatars/user' + number + '.png'
+  return console.log(avatar);
+};
+
+createRandomAvatar (10);
 
 
 
@@ -68,6 +81,40 @@ function getRandomNumInclusive (min, max, order) {
 getRandomNumInclusive(1.1, 1.3, 3);
 
 const PLACES_VALUE = 10;
+
+const TITLES = [
+  'Горбатая гора',
+  'у Мадины',
+  'Сосисочный викенд',
+  'У товарища',
+  'Анжела',
+  'Лазурный берег',
+  'Сансара',
+  'Cириус',
+  'Бархатные сезоны',
+  'Товарищ майор',
+];
+
+// создает массив заголовков
+const createRandomTitle = (titles) => {
+  let titlesArr = [];
+  let newTitles = titles.slice();
+
+  console.log(newTitles);
+  
+  for (let i = 0; i < titles.length; i++) {
+    console.log(titles.length)
+    const a = getRandomIntInclusive(0 ,newTitles.length - 1);
+    titlesArr.push(newTitles[a]);
+    console.log(titlesArr);
+    // newTitles.splice(a, 1);
+
+    
+  }
+  return console.log(titlesArr);
+};
+
+createRandomTitle (TITLES);
 
 const PLACE_TYPE = [
   'palace',
@@ -124,5 +171,3 @@ const createRandomPlace = () => {
 }
 
 createRandomPlace();
-
-
