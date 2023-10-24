@@ -1,53 +1,3 @@
-// Структура каждого объекта должна быть следующей:
-
-// author
-  //  avatar
-// offer
-  //  title
-  //  address
-  //  price
-  //  type
-  // rooms
-  // guests, 
-  // checkin
-  // checkout, 
-
-  // features, массив строк — массив случайной длины из значений: wifi, dishwasher, parking, washer, elevator, conditioner. Значения не должны повторяться.
-
-  // description, строка — описание помещения. Придумайте самостоятельно.
-
-  // photos, массив строк — массив случайной длины из значений: https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg, https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg.
-
-  // 
-
-
-
-  // создает рандомную координату  location, объект
-  // lat, от 35.65000 до 35.70000.
-  // lng, 139.70000 до 139.80000. 
-const createRandomLocation = () => {
-  return console.log({
-    lat: getRandomNumInclusive (35.65000, 35.70000, 5),
-    lng: getRandomNumInclusive (139.70000, 139.80000, 5),
-  });
-};
-
-createRandomLocation ();
-
-
-// создает адрес изображения avatar, строка
-const createRandomAvatar = (i) => {
-  const number = String(i).padStart(2,'0');
-  const avatar = 'img/avatars/user' + number + '.png'
-  return console.log(avatar);
-};
-
-createRandomAvatar (10);
-
-
-
-
-
 // Функция, возвращающая случайное целое число из переданного диапазона включительно.
 // Учтите, что диапазон может быть только положительный, включая ноль.
 // А также придумайте, как функция должна вести себя, если передать значение «до» меньшее, чем значение «от», или равное ему.
@@ -95,27 +45,6 @@ const TITLES = [
   'Товарищ майор',
 ];
 
-// создает массив заголовков
-const createRandomTitle = (titles) => {
-  let titlesArr = [];
-  let newTitles = titles.slice();
-
-  console.log(newTitles);
-  
-  for (let i = 0; i < titles.length; i++) {
-    console.log(titles.length)
-    const a = getRandomIntInclusive(0 ,newTitles.length - 1);
-    titlesArr.push(newTitles[a]);
-    console.log(titlesArr);
-    // newTitles.splice(a, 1);
-
-    
-  }
-  return console.log(titlesArr);
-};
-
-createRandomTitle (TITLES);
-
 const PLACE_TYPE = [
   'palace',
   'flat',
@@ -137,11 +66,11 @@ const CHECKOUT = [
 ];
 
 const FEATURES = [
-  'wifi', 
-  'dishwasher', 
-  'parking', 
-  'washer', 
-  'elevator', 
+  'wifi',
+  'dishwasher',
+  'parking',
+  'washer',
+  'elevator',
   'conditioner',
 ];
 
@@ -158,6 +87,28 @@ const DESCRIPTIONS = [
   'Цитата Джейсона Стейтема #10',
 ];
 
+// создает адрес изображения avatar, строка
+const createRandomAvatar = (num) => {
+  const number = String(num).padStart(2,'0');
+  const avatar = 'img/avatars/user' + number + '.png';
+  return avatar;
+};
+
+createRandomAvatar (10);
+
+// создает массив заголовков
+const createRandomTitle = (titles) => {
+  if (!(titles === undefined) & titles.length !== 0) {
+    const newTitles = titles.slice();
+    newTitles.sort(() => Math.random() - 0.5);
+    return newTitles;
+  }
+  throw new Error('массив пуст');
+};
+
+createRandomTitle (TITLES);
+
+
 const createRandomPlace = () => {
   const placesArray = [];
 
@@ -166,8 +117,21 @@ const createRandomPlace = () => {
       type: PLACE_TYPE[getRandomIntInclusive(0, PLACE_TYPE.length - 1)],
     });
   }
-
-  return  console.log(placesArray);
-}
+  return  placesArray;
+};
 
 createRandomPlace();
+
+// создает рандомную координату  location, объект
+// lat, от 35.65000 до 35.70000.
+// lng, 139.70000 до 139.80000.
+
+const createRandomLocation = () => {
+  const location = {
+    lat: getRandomNumInclusive (35.65000, 35.70000, 5),
+    lng: getRandomNumInclusive (139.70000, 139.80000, 5),
+  };
+  return location;
+};
+
+createRandomLocation ();
